@@ -49,3 +49,7 @@ Route::get('/basic-arithmetic/{op?}/{n1?}/{n2?}', function($op=null,$n1=null,$n2
 					'n2'=> $n2
 				));
 })->name('basic-arithmetic');
+
+Route::get('/middleware/{age}', function($age){
+	return view ('age', array('age'=>$age));
+})->middleware('age');
