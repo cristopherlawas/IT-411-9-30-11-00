@@ -53,3 +53,7 @@ Route::get('/basic-arithmetic/{op?}/{n1?}/{n2?}', function($op=null,$n1=null,$n2
 Route::get('/middleware/{age}', function($age){
 	return view ('age', array('age'=>$age));
 })->middleware('age');
+
+Route::get('/pages/contact','PagesController@contactPage');
+
+Route::get('/pages/middleware/{age}','PagesController@middlewareAgePage');
