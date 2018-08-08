@@ -27,7 +27,7 @@ class CrushesController extends Controller
     public function create()
     {
          $crush = new Crush();
-         return view('crushes.creaste', array('crush'=>$crush,
+         return view('crushes.create', array('crush'=>$crush,
                                               'action'=>route('crushes.store'),
                                                'submit_text'=>"Create Crush"));
     }
@@ -105,6 +105,15 @@ class CrushesController extends Controller
 
     private function setAndSaveCrushData($crush, $request)
     {
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'fb_profile_link' => 'required|url',
+            'contact_number' => 'required|digits:11'
+
+        ]);
+
+
         $crush->first_name = $request->first_name;
         $crush->last_name = $request->last_name;
         $crush->fb_profile_link = $request->fb_profile_link;
